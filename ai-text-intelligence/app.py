@@ -126,19 +126,27 @@ elif feature == "✍️ Poetry Meter Checker":
                     result = analyze_meter(poem_input)
                     
                     st.success("Analysis Complete!")
-                    col1, col2 = st.columns(2)
+                    col1, col2, col3 = st.columns(3)
                     with col1:
                         st.metric("Dominant Meter", result.get("meter_type"))
                     with col2:
                         st.metric("Confidence", result.get("confidence"))
+                    with col3:
+                        st.metric("Rhyme Scheme", result.get("rhyme_scheme", "N/A"))
                         
                     st.info(result.get("explanation"))
                     
                     st.markdown("#### Line-by-Line Stress Analysis")
-                    st.caption("0 = Unstressed | 1 = Stressed")
+                    st.caption("× = Unstressed  |  / = Stressed")
                     for line_data in result.get("line_analysis", []):
+                        symbols = " ".join("×" if s == 0 else "/" for s in line_data["stress_pattern"])
+                        meter_label = line_data.get("meter", "")
+                        score_label = line_data.get("score", "")
+                        foot_label = line_data.get("foot_count", "")
+                        
                         st.write(f"**Line:** {line_data['line']}")
-                        st.write(f"**Pattern:** `{' '.join(map(str, line_data['stress_pattern']))}`")
+                        st.write(f"**Stress:** `{symbols}`")
+                        st.write(f"**Detected:** {meter_label} ({foot_label} feet) — score: {score_label}")
                         st.divider()
                 except Exception as e:
                     st.error(f"Error checking meter: {str(e)}")
