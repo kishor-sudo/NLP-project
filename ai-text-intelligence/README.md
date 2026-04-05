@@ -2,7 +2,7 @@
 
 A complete, AI-powered web application built using Python and Streamlit. This application is modular, well-documented, and production-ready. It demonstrates practical NLP applications using rules, dictionaries, and modern transformer models.
 
-## Features
+
 
 1. **Song Meaning Interpreter**
    - Natural language processing for text cleaning and tokenization.
