@@ -25,9 +25,15 @@ st.markdown("""
         text-align: center;
         margin-bottom: 1rem;
     }
-    h2, h3 {
+    h2 {
         font-family: 'Inter', sans-serif;
         color: #4a5568;
+        text-align: center;
+    }
+    h3 {
+        font-family: 'Inter', sans-serif;
+        color: #2e3b4e;
+        text-align: center;
     }
     /* Stylish results cards */
     .result-card {
@@ -69,12 +75,7 @@ feature = st.sidebar.radio(
     ["🎵 Song Meaning Interpreter", "✍️ Poetry Meter Checker", "📝 Text Summarization Tool"]
 )
 
-st.sidebar.markdown("---")
-st.sidebar.markdown("**About**")
-st.sidebar.info(
-    "The AI Text Intelligence Platform is a suite of advanced natural language "
-    "processing tools designed to help you analyze, interpret, and summarize text."
-)
+
 
 st.title("AI Text Intelligence Platform")
 
@@ -179,4 +180,3 @@ elif feature == "📝 Text Summarization Tool":
 
 # Footer
 st.markdown("---")
-st.markdown("<p style='text-align: center; color: gray;'>Built with ❤️ using Python & Streamlit</p>", unsafe_allow_html=True)
